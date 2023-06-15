@@ -1,0 +1,79 @@
+.pokemon-all {
+    display: grid;
+    grid-template-columns: 39.5vw 39.5vw;
+    grid-gap: 5vw;
+    padding-top: 20px;
+}
+
+.card {
+    width: 40vw;
+    height: 20vw;
+    border: none;
+    border-radius: 50px;
+    display: flex;
+}
+
+.poke-details {
+    margin: 0 auto;
+}
+
+.poke-img {
+    width: 15vw;
+    height: 15vw;
+    margin: auto;
+}
+
+.poke-name {
+    font-size: 2vw;
+    text-transform: capitalize;
+}
+
+.poke-type {
+    width: 10vw;
+    height: 4vw;
+    font-size: 1.8vw;
+    margin: 2vw auto;
+    border: none;
+    text-transform: capitalize;
+    color: white;
+    border-radius: 50px;
+}
+
+.detail-button {
+    border-radius: 50px;
+    border: none;
+}
+
+@media screen and (min-width: 800px) {
+    .body {
+        background: #eee;
+        width: 800px;
+        margin: 0 auto;
+    }
+
+    .pokemon-all {
+        grid-template-columns: 340px 340px;
+        grid-gap: 40px;
+    }
+
+    .card {
+        width: 400px;
+        height: 200px;
+    }
+
+    .poke-img {
+        width: 150px;
+        height: 150px;
+    }
+
+    .poke-name {
+        font-size: 20px;
+    }
+
+    .poke-type {
+        width: 100px;
+        height: 30px;
+        font-size: 16px;
+        margin: 20px auto;
+    }
+}

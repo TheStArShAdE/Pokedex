@@ -1,0 +1,31 @@
+.w3-container {
+    height: 8vw;
+}
+
+.w3-container h1 {
+    font-size: 4vw;
+}
+
+.side-nav {
+    position: fixed;
+    top: 50px;
+    right: 50px;
+    background: lightgray;
+    color: black;
+    border: none;
+    border-radius: 50px;
+}
+
+@media screen and (min-width: 800px) {
+    .w3-container {
+        height: 62px;
+    }
+
+    .w3-container h1 {
+        font-size: 33px;
+    }
+
+    .w3-button {
+        font-size: 25px;
+    }
+}
