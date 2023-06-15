@@ -5,6 +5,10 @@
     padding-top: 20px;
 }
 
+.body h1 {
+    margin-left: 50px;
+}
+
 .card {
     width: 40vw;
     height: 20vw;
@@ -48,7 +52,7 @@
     .body {
         background: #eee;
         width: 800px;
-        margin: 0 auto;
+        margin: -10px auto;
     }
 
     .pokemon-all {

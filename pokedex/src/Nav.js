@@ -36,7 +36,7 @@ const Nav = () => {
     }
 
     return (<div>
-        <div className='w3-sidebar w3-bar-block w3-collapse' id="mySidebar">
+        <div className='w3-sidebar w3-bar-block' id="mySidebar">
             <button onClick={w3_close} className="w3-bar-item w3-button">
                 <FontAwesomeIcon icon={faXmark} />
             </button>
@@ -58,7 +58,7 @@ const Nav = () => {
             </div>
             <button className="w3-bar-item w3-button" onClick={() => navigate("/Bookmarks")}>Bookmarks</button>
         </div>
-        <button onClick={w3_open} className="w3-button side-nav w3-xlarge w3-right">
+        <button onClick={w3_open} className="w3-button side-nav w3-right">
             <FontAwesomeIcon icon={faBars} />
         </button>
     </div>

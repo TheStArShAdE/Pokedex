@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
 import './DetailsPage.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHeart } from '@fortawesome/free-regular-svg-icons';
+import { faHeart as faHeartSolid } from '@fortawesome/free-solid-svg-icons';
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 
 function DetailsPage() {
 
@@ -47,7 +50,6 @@ function DetailsPage() {
         '#EE99EE',
     ];
 
-    const navigate = useNavigate();
     const { id } = useParams();
     const [pokemonDetails, setPokemonDetails] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
@@ -90,6 +92,12 @@ function DetailsPage() {
         }
     };
 
+    const newShade = (type) => {
+        const pokeTypes = ['normal', 'fire', 'water', 'electric', 'grass', 'ice', 'fighting', 'poison', 'ground', 'flying', 'psychic', 'bug', 'rock', 'ghost', 'dragon', 'dark', 'steel', 'fairy'];
+        const color = ['silver', 'salmon', 'lightskyblue', 'khaki', 'mediumaquamarine', 'lightblue', 'indianred', 'plum', 'darkkhaki', 'lightsteelblue', 'palevioletred', 'greenyellow', 'tan', 'mediumpurple', 'slateblue', 'peru', 'lavender', 'pink'];
+        return color[pokeTypes.indexOf(type)];
+    };
+
     if (isLoading) {
         return <p>Loading...</p>;
     }
@@ -100,20 +108,32 @@ function DetailsPage() {
 
     return (
         <div>
-            <h1>Pokemon Details</h1>
-            <div>
-                <img src={pokemonDetails['sprites']['other']['official-artwork']['front_default']} alt={pokemonDetails.name} />
-                <div className='poke-details'>
-                    <p className='poke-name'>{pokemonDetails.name}</p>
-                    {pokemonDetails.types && pokemonDetails.types.length > 0 ? (<input type='button' value={pokemonDetails.types[0].type.name} className='poke-type' style={{ background: typeColor[pokemonType.indexOf(pokemonDetails.types[0].type.name)], }} disabled />) : null}
-                    {pokemonDetails.types && pokemonDetails.types.length > 1 ? (<input type='button' value={pokemonDetails.types[1].type.name} className='poke-type' style={{ background: typeColor[pokemonType.indexOf(pokemonDetails.types[1].type.name)], }} disabled />) : null}
-                </div>
-                <button
-                    onClick={handleBookmark}
-                    style={{ backgroundColor: isBookmarked ? 'red' : 'transparent' }}
-                >
-                    ❤️
+            <div id='body-details' style={{ background: newShade(pokemonDetails.types[0].type.name), }}>
+                <button id='back-btn'><FontAwesomeIcon icon={faArrowLeft} style={{ color: "#ffffff", }} /></button>
+                <button onClick={handleBookmark} id='bookmark' >
+                    {isBookmarked ? <FontAwesomeIcon icon={faHeart} style={{ color: "#ffffff", }} /> : <FontAwesomeIcon icon={faHeartSolid} style={{ color: "#f12c09", }} />}
                 </button>
+                <div id='details-nameTypeIdImg'>
+                    <div id='details-nameTypeId'>
+                        <div id='details-nameType'>
+                            <h1 id='details-name'>{pokemonDetails.name}</h1>
+                            <div id='details-type'>
+                                {pokemonDetails.types && pokemonDetails.types.length > 0 ? (<input type='button' value={pokemonDetails.types[0].type.name} className='poke-type' style={{ background: typeColor[pokemonType.indexOf(pokemonDetails.types[0].type.name)], }} disabled />) : null}
+                                {pokemonDetails.types && pokemonDetails.types.length > 1 ? (<input type='button' value={pokemonDetails.types[1].type.name} className='poke-type' style={{ background: typeColor[pokemonType.indexOf(pokemonDetails.types[1].type.name)], }} disabled />) : null}
+                            </div>
+                        </div>
+                        <p id='details-id'>{pokemonDetails.id < 10 ? '#00' + pokemonDetails.id : pokemonDetails.id < 100 ? '#0' + pokemonDetails.id : '#' + pokemonDetails.id}</p>
+                    </div>
+                    <img id='details-img' src={pokemonDetails['sprites']['other']['official-artwork']['front_default']} alt={pokemonDetails.name} />
+                </div>
+            </div>
+            <div id='details-detail'>
+                <ul id='detail-list'>
+                    <li>About</li>
+                    <li>Base Stats</li>
+                    <li>Evolution</li>
+                    <li>Moves</li>
+                </ul>
             </div>
         </div>
     );

@@ -92,23 +92,10 @@ function ListingPage() {
     };
 
 
-    const newShade = (hexColor, magnitude) => {
-        hexColor = hexColor.replace(`#`, ``);
-        if (hexColor.length === 6) {
-            const decimalColor = parseInt(hexColor, 16);
-            let r = (decimalColor >> 16) + magnitude;
-            r > 255 && (r = 255);
-            r < 0 && (r = 0);
-            let g = (decimalColor & 0x0000ff) + magnitude;
-            g > 255 && (g = 255);
-            g < 0 && (g = 0);
-            let b = ((decimalColor >> 8) & 0x00ff) + magnitude;
-            b > 255 && (b = 255);
-            b < 0 && (b = 0);
-            return `#${(g | (b << 8) | (r << 16)).toString(16)}`;
-        } else {
-            return hexColor;
-        }
+    const newShade = (type) => {
+        const pokeTypes = ['normal', 'fire', 'water', 'electric', 'grass', 'ice', 'fighting', 'poison', 'ground', 'flying', 'psychic', 'bug', 'rock', 'ghost', 'dragon', 'dark', 'steel', 'fairy'];
+        const color = ['silver', 'salmon', 'lightskyblue', 'khaki', 'mediumaquamarine', 'lightblue', 'indianred', 'plum', 'darkkhaki', 'lightsteelblue', 'palevioletred', 'greenyellow', 'tan', 'mediumpurple', 'slateblue', 'peru', 'lavender', 'pink'];
+        return color[pokeTypes.indexOf(type)];
     };
 
     const handleButtonClick = (id) => {
@@ -117,10 +104,11 @@ function ListingPage() {
 
     return (
         <div className='body'>
+            <h1>Pokemon List</h1>
             <ul className='pokemon-all'>
                 {pokemonList.map((pokemon) => (
                     <li key={pokemon.id} className='poke-list' style={{ display: 'flex' }}>
-                        <button className='card' style={{ background: newShade(typeColor[pokemonType.indexOf(pokemon.types[0].type.name)], 40), }} onClick={() => handleButtonClick(pokemon.id)} >
+                        <button className='card' style={{ background: newShade(pokemon.types[0].type.name) }} onClick={() => handleButtonClick(pokemon.id)} >
                             <div className='poke-details'>
                                 <p className='poke-name'>{pokemon.name}</p>
                                 {pokemon.types && pokemon.types.length > 0 ? (<input type='button' value={pokemon.types[0].type.name} className='poke-type' style={{ background: typeColor[pokemonType.indexOf(pokemon.types[0].type.name)], }} disabled />) : null}
