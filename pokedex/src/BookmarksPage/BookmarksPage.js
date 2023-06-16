@@ -1,4 +1,8 @@
 import React, { useEffect, useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faXmark } from '@fortawesome/free-solid-svg-icons';
+
+import './BookmarksPage.css';
 
 function BookmarksPage() {
   const [bookmarks, setBookmarks] = useState([]);
@@ -15,17 +19,24 @@ function BookmarksPage() {
   };
 
   return (
-    <div>
-      <h1>Bookmarks</h1>
+    <div id='favourite'>
+      <h1>Favourites</h1>
       {bookmarks.length === 0 ? (
-        <p>No bookmarks available</p>
+        <p>No Favourites Available</p>
       ) : (
-        <ul>
+        <ul id='favourite-body'>
           {bookmarks.map((bookmark) => (
-            <li key={bookmark.id}>
-              <img src={bookmark.image} alt={bookmark.name} />
-              <p>{bookmark.name}</p>
-              <button onClick={() => removeBookmark(bookmark.id)}>Remove Bookmark</button>
+            <li key={bookmark.id} id='favourite-card'>
+              <div id='favourite-id'>
+                <p id='favourite-idp'>{bookmark.id < 10 ? '#00' + bookmark.id : bookmark.id < 100 ? '#0' + bookmark.id : '#' + bookmark.id}</p>
+              </div>
+              <div id='favourite-nameImg'>
+                <img src={bookmark.image} alt={bookmark.name} id='favourite-img' />
+                <p id='favourite-name'>{bookmark.name}</p>
+              </div>
+              <div>
+                <button id='favourite-button' onClick={() => removeBookmark(bookmark.id)}><FontAwesomeIcon icon={faXmark} /></button>
+              </div>
             </li>
           ))}
         </ul>

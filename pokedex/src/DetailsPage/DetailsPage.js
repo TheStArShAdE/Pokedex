@@ -63,12 +63,16 @@ function DetailsPage() {
                 setPokemonDetails(response.data);
                 setIsLoading(false);
             } catch (error) {
-                setError('Error occurred while fetching data. Please try again.');
+                setError(error);
                 setIsLoading(false);
             }
         };
 
         fetchPokemonDetails();
+
+        const bookmarkedPokemon = JSON.parse(localStorage.getItem('bookmarkedPokemon')) || [];
+        const isBookmarked = bookmarkedPokemon.some((pokemon) => pokemon.id === Number(id));
+        setIsBookmarked(isBookmarked);
     }, [id]);
 
     const handleBookmark = () => {
@@ -111,7 +115,7 @@ function DetailsPage() {
             <div id='body-details' style={{ background: newShade(pokemonDetails.types[0].type.name), }}>
                 <button id='back-btn'><FontAwesomeIcon icon={faArrowLeft} style={{ color: "#ffffff", }} /></button>
                 <button onClick={handleBookmark} id='bookmark' >
-                    {isBookmarked ? <FontAwesomeIcon icon={faHeart} style={{ color: "#ffffff", }} /> : <FontAwesomeIcon icon={faHeartSolid} style={{ color: "#f12c09", }} />}
+                    {isBookmarked ? <FontAwesomeIcon icon={faHeartSolid} style={{ color: "#f12c09", }} /> : <FontAwesomeIcon icon={faHeart} style={{ color: "#ffffff", }} />}
                 </button>
                 <div id='details-nameTypeIdImg'>
                     <div id='details-nameTypeId'>

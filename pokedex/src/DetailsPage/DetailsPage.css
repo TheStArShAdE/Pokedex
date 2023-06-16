@@ -96,3 +96,52 @@
     color: black;
     cursor: pointer;
 }
+
+@media screen and (max-width: 800px) {
+    #body-details {
+        width: 100vw;
+    }
+
+    #back-btn {
+        font-size: 3.5vw;
+        left: 4vw;
+        top: 3vh;
+    }
+    
+    #bookmark {
+        font-size: 3.5vw;
+        left: 85vw;
+        top: 3vh;
+    }
+    
+    #details-name {
+        margin-left: 5vw;
+        font-size: 4vw;
+        top: 5vh;
+    }
+    
+    #details-id {
+        font-size: 2.5vw;
+        right: -60vw;
+        top: 7vh;
+    }
+    
+    #details-type {
+        top: 3vh;
+        left: 5vw;
+    }
+    
+    #details-img {
+        width: 40vw;
+        top: 7vh;
+        left: 35vw;
+    }
+    
+    #details-detail {
+        width: 100vw;
+        height: 30vh;
+        bottom: 10vw;
+        border-radius: 50px;
+    }
+    
+}
