@@ -55,6 +55,7 @@ function DetailsPage() {
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState('');
     const [isBookmarked, setIsBookmarked] = useState(false);
+    const [activeTab, setActiveTab] = useState('about');
 
     useEffect(() => {
         const fetchPokemonDetails = async () => {
@@ -102,6 +103,10 @@ function DetailsPage() {
         return color[pokeTypes.indexOf(type)];
     };
 
+    const handleTabClick = (tabName) => {
+        setActiveTab(tabName);
+    };
+
     if (isLoading) {
         return <p>Loading...</p>;
     }
@@ -133,14 +138,30 @@ function DetailsPage() {
             </div>
             <div id='details-detail'>
                 <ul id='detail-list'>
-                    <li>About</li>
-                    <li>Base Stats</li>
-                    <li>Evolution</li>
-                    <li>Moves</li>
+                    <li onClick={() => handleTabClick('about')} className={activeTab === 'about' ? 'active' : ''} style={activeTab === 'about' ? { color: 'black' } : {}} > About </li>
+                    <li onClick={() => handleTabClick('baseStats')} className={activeTab === 'baseStats' ? 'active' : ''} style={activeTab === 'baseStats' ? { color: 'black' } : {}} > Base Stats </li>
+                    <li onClick={() => handleTabClick('evolution')} className={activeTab === 'evolution' ? 'active' : ''} style={activeTab === 'evolution' ? { color: 'black' } : {}} > Evolution </li>
+                    <li onClick={() => handleTabClick('moves')} className={activeTab === 'moves' ? 'active' : ''} style={activeTab === 'moves' ? { color: 'black' } : {}} > Moves </li>
                 </ul>
+                {activeTab === 'about' && <div className='content'>
+                    <p>weight : {pokemonDetails.weight / 10} kg</p>
+                    <p>height : {pokemonDetails.height / 10} m</p>
+                </div>}
+                {activeTab === 'baseStats' && <div className='content'>
+                    {pokemonDetails.stats.map((stats) => (
+                        <p>{stats.stat.name} : {stats.base_stat}</p>
+                    ))}
+                </div>}
+                {activeTab === 'evolution' && <div className='content'>Evolution Content</div>}
+                {activeTab === 'moves' && <div className='content'>
+                    {pokemonDetails.moves.map((move) => (
+                        <p key={move.move.name}>{move.move.name}</p>
+                    ))}
+                </div>}
             </div>
         </div>
     );
 }
+
 
 export default DetailsPage;

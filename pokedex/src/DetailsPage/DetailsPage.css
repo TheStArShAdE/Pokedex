@@ -97,6 +97,16 @@
     cursor: pointer;
 }
 
+.content {
+    text-transform: capitalize;
+    font-weight: 600;
+    width: 700px;
+    margin: 0 auto;
+    margin-top: 80px;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
 @media screen and (max-width: 800px) {
     #body-details {
         width: 100vw;
