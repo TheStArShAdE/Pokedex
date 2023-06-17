@@ -146,13 +146,16 @@ function DetailsPage() {
                 {activeTab === 'about' && <div className='content'>
                     <p>weight : {pokemonDetails.weight / 10} kg</p>
                     <p>height : {pokemonDetails.height / 10} m</p>
+                    <p>Abilities : {pokemonDetails.abilities.map((abilities) => (
+                        <p key={abilities.ability.name} style={{marginLeft:'80px'}}>{abilities.ability.name} <span style={{color:'gray'}}>{abilities.is_hidden ? '(hidden)' : ''}</span></p>
+                    ))}</p>
                 </div>}
                 {activeTab === 'baseStats' && <div className='content'>
                     {pokemonDetails.stats.map((stats) => (
                         <p>{stats.stat.name} : {stats.base_stat}</p>
                     ))}
                 </div>}
-                {activeTab === 'evolution' && <div className='content'>Evolution Content</div>}
+                {activeTab === 'evolution' && <div className='content'>Not Added yet</div>}
                 {activeTab === 'moves' && <div className='content'>
                     {pokemonDetails.moves.map((move) => (
                         <p key={move.move.name}>{move.move.name}</p>

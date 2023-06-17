@@ -54,7 +54,7 @@ function ListingPage() {
     useEffect(() => {
         fetchPokemonList();
     }, []);
-    
+
     useEffect(() => {
         window.addEventListener('scroll', handleScroll);
         return () => {
@@ -90,7 +90,6 @@ function ListingPage() {
         )
             fetchPokemonList();
     };
-
 
     const newShade = (type) => {
         const pokeTypes = ['normal', 'fire', 'water', 'electric', 'grass', 'ice', 'fighting', 'poison', 'ground', 'flying', 'psychic', 'bug', 'rock', 'ghost', 'dragon', 'dark', 'steel', 'fairy'];
