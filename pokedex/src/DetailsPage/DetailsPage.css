@@ -58,9 +58,9 @@
 
 #details-type {
     display: flex;
+    justify-content: flex-start;
     position: relative;
     top: 30px;
-    left: 50px;
 }
 
 #details-img {
@@ -105,6 +105,27 @@
     margin-top: 80px;
     max-height: 300px;
     overflow-y: auto;
+}
+
+.species {
+    position: relative;
+    top: 10px;
+    display: flex;
+    justify-content: space-around;
+    font-weight: 600;
+    z-index: 10;
+}
+
+.poke-variety {
+    text-transform: capitalize;
+    background-color: transparent;
+    color: lightgray;
+    border: none;
+}
+
+.poke-variety:hover {
+    cursor: pointer;
+    color: black;
 }
 
 @media screen and (max-width: 800px) {
