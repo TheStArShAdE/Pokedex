@@ -51,8 +51,8 @@
     font-size: 25px;
     font-weight: 600;
     color: white;
-    position: relative;
-    right: -450px;
+    position: absolute;
+    right: 200px;
     top: 90px;
 }
 
@@ -107,10 +107,22 @@
     overflow-y: auto;
 }
 
+.content-stats {
+    text-transform: capitalize;
+    font-weight: 600;
+    width: 700px;
+    margin: 0 auto;
+    margin-top: 80px;
+    max-height: 300px;
+    overflow-y: auto;
+    display: flex;
+}
+
 .species {
     position: relative;
     top: 10px;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-around;
     font-weight: 600;
     z-index: 10;
@@ -126,6 +138,37 @@
 .poke-variety:hover {
     cursor: pointer;
     color: black;
+}
+
+.stats-name p {
+    width: 9vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.stats p {
+    margin-left: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.bar {
+    margin-left: 50px;
+    display: flex;
+    flex-direction: column;
+}
+
+.bar p {
+    border: 1px solid lightgray;
+    border-radius: 5px;
+}
+
+.moves {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
 }
 
 @media screen and (max-width: 800px) {
